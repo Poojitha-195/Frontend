@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script>
+        let codegnan = {
+            location : 'hyd'
+        };
+        let courses = {
+            cour1 : 'Python',
+            cour2 : 'Java',
+            __proto__ : codegnan
+        };
+        let batch = {
+            __proto__ : courses
+        };
+        console.log(courses.location);
+        console.log(batch.cour1);
+    </script> -->
+
+
+    <!-- <script>
+        let animal = {
+            walk() {
+                return "animal walks"
+            }
+        };
+        let dog = {
+            __proto__ : animal
+        };
+        dog.walk() = function(){
+            return "dog barks"
+        };
+        console.log(animal.walk());
+        console.log(dog.walk());
+    </script> -->
+
+    <script>
+        let fruit1 = {
+            name:'grapes',
+            color:'black',
+            taste:'sour'
+        };
+        let fruit2 = {
+            name:'mango',
+            color:'yellow',
+            taste:'sweet'
+        };
+        function fruit(a,b){
+            console.log(a+" "+this.name+" "+b+" "+this.color+" "+this.taste)
+        };
+        // fruit.call(fruit1,'this','is');
+        // fruit.apply(fruit2,['this','is']);
+        var x = fruit.bind(fruit1);
+        x('this','are');
+    </script>
+</body>
+</html>

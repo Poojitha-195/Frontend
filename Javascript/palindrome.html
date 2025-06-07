@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input">
+    <button id="button">Check Palindrome</button>
+    <div id="output"></div>
+
+    <script>
+        let inputEle = document.getElementById("input")
+        let buttonEle = document.getElementById("button")
+        let outputEle = document.getElementById("output")
+
+        buttonEle.addEventListener("click",()=>{
+            let string = inputEle.value
+            let emptyString = string.split("").reverse().join("")
+            if (emptyString === string){
+                outputEle.textContent = "This is a Palindrome"
+            }
+            else{
+                outputEle.textContent = "This is not a Plaindrome"
+            }
+        })
+    </script>
+</body>
+</html>

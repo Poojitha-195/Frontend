@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>TODO List Example</h1>
+    <input type="text" id="input" placeholder="write something">
+    <button id="button">Add to list</button>
+    <ul id="ul"></ul>
+
+    <script>
+        let inEle = document.getElementById("input")
+        let btnEle = document.getElementById("button")
+        let ulEle = document.getElementById("ul")
+
+        btnEle.addEventListener('click',()=>{
+            let liEle = document.createElement('li')
+            liEle.textContent = inEle.value
+            ulEle.appendChild(liEle)
+
+        let delbtn = document.createElement('button')
+        delbtn.textContent = "Remove"
+        
+        liEle.appendChild(delbtn)
+        delbtn.addEventListener('click',()=>{
+            liEle.remove()
+        })
+        inEle.value = ""
+        })
+    </script>
+</body>
+</html>

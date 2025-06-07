@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="timerdisplay">00:00:00:00</h1>
+    <div id="div">
+    <button onclick="startTimer()">Start</button>
+    <button onclick="stopTimer()">Stop</button>
+    <button onclick="resetTimer()">Reset</button>
+    </div>
+
+    <script>
+        let display = document.getElementById("timerdisplay")
+
+        ms = 0;
+        ss = 0;
+        mm = 0;
+        hr = 0;
+        
+        let timer = null;
+
+        function displayTime() {
+            display.innerText = `${hr.toString().padStart(2, '0')}:${mm.
+            toString().padStart(2, '0')}:${ss.toString().padStart
+            (2, '0')}:${ms.toString().padStart(2, '0')}`;
+        }
+
+
+        function startTimer(){
+            if(!timer){
+                timer = setInterval(() => {
+                    ms++
+                    if (ms == 100){
+                        ms = 0
+                        ss++
+                    }
+                    if (ss === 60) {
+                        ss = 0;
+                        ms++;
+                    }
+
+                    if (mm === 60) {
+                        mm = 0;
+                        hr++;
+                    }
+                    displayTime()
+                },10)
+            }
+        }
+
+        function stopTimer(){
+            clearInterval(timer)
+            timer = null
+        }
+
+        function resetTimer(){
+            clearInterval(timer)
+            timer = null
+            ms = 0
+            ss = 0
+            mm = 0
+            hr = 0
+            displayTime()
+        }
+    </script>
+</body>
+</html>

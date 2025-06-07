@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="p"></p>
+    <script>
+        let pEle = document.getElementById("p");
+        let string = "Hello, this is the example of typewriter!";
+        let index = 0;
+
+        let typing = setInterval(() => {
+            pEle.innerHTML = string.slice(0, index++);
+            if (index > string.length) {
+                index = 0
+                clearInterval(typing);
+            }
+        }, 150);
+    </script>
+</body>
+</html>

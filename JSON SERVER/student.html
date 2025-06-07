@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+</head>
+<body>
+    <h1>Student Details</h1>
+    <form id="form">
+        <input type="text" id="name" placeholder="Enter name" required>
+        <input type="text" id="age" placeholder="Enter age" required>
+        <button id="add" type="submit">Add Details</button>
+    </form>
+    <ul id="list"></ul>
+
+    <script>
+        let form = document.getElementById("form");
+        let nameEle = document.getElementById("name");
+        let ageEle = document.getElementById("age");
+        let list = document.getElementById("list");
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            let student = {
+                name: nameEle.value,
+                age: ageEle.value
+            };
+
+            fetch("http://localhost:3001/students", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(student)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert("Student added: " + data.message);
+
+                const li = document.createElement("li");
+                li.textContent = `Name: ${student.name}, Age: ${student.age}`;
+                list.appendChild(li);
+
+                nameEle.value = "";
+                ageEle.value = "";
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+        });
+    </script>
+</body>
+</html>

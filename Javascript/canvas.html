@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Canvas Drawing</title>
+  <style>
+    /* Make body take full height and center content */
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f3f4f6;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Container holding canvas and buttons */
+    #canvas-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    canvas {
+      border: 2px solid #333;
+      background: white;
+    }
+
+    #btn button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: #4f46e5;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    #btn button:hover {
+      background-color: #4338ca;
+    }
+  </style>
+</head>
+<body>
+  <div id="canvas-container">
+    <canvas id="drawing-area" width="400" height="300"></canvas>
+    <div id="btn">
+      <button id="pencil">Pencil</button>
+      <button id="eraser">Eraser</button>
+      <button id="clear">Clear</button>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.querySelector("#drawing-area");
+
+    let drawing = false;
+    let eraser = false;
+    let defaultStyle = rgb(255,255,255)
+    let startX, startY
+
+    let ctx = canvas.getContext("2d")
+    ctx.fillStyle = defaultStyle;
+
+    canvas.addEventListener("mousedown",(e) => {
+        startX = e.offsetX;
+        startY = e.offseY;
+        drawing = true;
+    })
+  </script>
+</body>
+</html>
